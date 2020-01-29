@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import SearchBar from "./components/SearchPage";
+import Table from './components/Table';
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
+      <Table />
     </div>
+
   );
 }
 
