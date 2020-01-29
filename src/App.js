@@ -7,11 +7,15 @@ import Table from './components/Table';
 
 function App() {
 
-  // axios.get('https://api.github.com/repos/ZSully09/To-Do-List/issues')
-  //   .then(res => console.log(res));
+  axios.get('https://api.github.com/repos/ZSully09/To-Do-List/issues')
+    .then(res => console.log(res));
+
+  const search = (data) => {
+    console.log(data);
+  }
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar onSearch={search} />
       <Table />
     </div>
 

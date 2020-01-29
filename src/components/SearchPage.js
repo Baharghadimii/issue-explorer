@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import './SearchPage.scss';
+import { checkPropTypes } from "prop-types";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
+  const [state, setState] = useState('');
+
+  const search = () => {
+    props.onSearch(state);
+  }
+
   return (
     <div className='search'>
-      <input className='search-bar' />
-      <button className='search-btn'>Search</button>
+      <input
+        className='search-bar'
+        value={state}
+        onChange={e => setState(e.target.value)} />
+      <button
+        className='search-btn'
+        onClick={search}>Search</button>
     </div>
   );
 }
