@@ -1,5 +1,6 @@
 import React from 'react';
-import './Table.scss'
+import './Table.scss';
+import TableData from './TableRow';
 
 const Table = () => {
   return (
@@ -8,8 +9,8 @@ const Table = () => {
       <th className='head status'>Status</th>
       <tbody>
         <tr className='row'>
-          <td>1</td>
-          <td>a</td>
+          <TableData className='tb-data td-issue'>1</TableData>
+          <TableData className='tb-data td-status'>a</TableData>
         </tr>
       </tbody>
     </table>
