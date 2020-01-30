@@ -7,12 +7,11 @@ import useApplicationData from './hooks/useApplicationData';
 
 function App() {
 
-  const { getIssues, getStatus } = useApplicationData();
+  const { getIssues, getPullRequest } = useApplicationData();
 
   const search = (data) => {
-    getIssues().then((res) => {
+    getIssues('ZSully09', 'To-Do-List').then((res) => {
       console.log(res);
-
     });
   }
   return (
