@@ -12,12 +12,6 @@ function App() {
   const [state, setState] = useState({
     list: []
   });
-  const [filter, setFilter] = useState({
-    open: false,
-    close: false,
-    pull: false,
-    all: false
-  })
 
   const select = (value) => {
     if (value === 'open') {
@@ -46,7 +40,7 @@ function App() {
     <div className="App">
       <SearchBar onSearch={search} />
       <div className="tables">
-        <Table data={state} select={select} filter={filter} />
+        <Table data={state} select={select} />
       </div>
     </div>
 

@@ -7,7 +7,6 @@ const Table = (props) => {
   const select = (value) => {
     props.select(value);
   }
-  console.log(props.filter.open)
   return (
     <table className="table">
       <thead className='t-head'>
