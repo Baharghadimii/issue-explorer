@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function useApplicationData() {
 
 
-  function getIssues(ownerRepo) {
+  function getOpenIssues(ownerRepo) {
     return axios.get(`https://api.github.com/repos/${ownerRepo}/issues`)
       .then(res => {
         return res.data;
       });
   }
-  function getPullRequest(ownerRepo) {
-    return axios.get(`https://api.github.com/repos/${ownerRepo}/pulls`)
+  function getClosedIssues(ownerRepo) {
+    return axios.get(`https://api.github.com/repos/${ownerRepo}/issues/events`)
       .then(res => {
-        return res.data
+        return res.data;
       });
   }
-  return { getIssues, getPullRequest }
+  function getPullRequests(ownerRepo) {
+    return axios.get(`https://api.github.com/repos/${ownerRepo}/pulls`)
+      .then(res => {
+        return res.data;
+      });
+  }
+  return { getOpenIssues, getClosedIssues, getPullRequests }
 }

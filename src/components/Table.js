@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Table.scss';
-import TableData from './TableRow';
+import TableRow from './TableRow';
+
 
 const Table = (props) => {
+
   return (
     <table className="table">
-      <th className='head issues'>{props.name}</th>
-      <th className='head status'>Status</th>
+      <th className='head issues'>Issues</th>
       <tbody>
-
-        {props.data.map(item => {
+        {props.data.openIssues.map(item => {
           console.log(item);
           return (
-            <tr className='row'>
-              <TableData title={item.title}></TableData>
-              <Octicon icon={Icon} />
-            </tr>)
+            <TableRow className='row' data={item} status={item.state}>
+            </TableRow>)
         })}
-
+        {props.data.closedIssue.map(item => {
+          console.log(item);
+          return (
+            <TableRow className='row' data={item.issue} status={item.issue.state} pull={item.issue.pull_request}>
+            </TableRow>)
+        })}
+        {props.data.pull.map(item => {
+          console.log(item);
+          return (
+            <TableRow className='row'>
+            </TableRow>)
+        })}
       </tbody>
     </table>
   )
