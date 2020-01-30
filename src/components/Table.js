@@ -22,7 +22,7 @@ const Table = (props) => {
       <tbody className="tb-body">
         {props.data.list.map(item => {
           return (
-            <TableRow category={item.category} title={item.title} status={item.state}>
+            <TableRow category={item.category} title={item.title} link={item.link} status={item.state}>
             </TableRow>)
         })}
       </tbody>

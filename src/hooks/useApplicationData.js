@@ -12,7 +12,7 @@ export default function useApplicationData() {
           temp['title'] = element.title || element.issue.title;
           temp['category'] = 'open';
           temp['state'] = element.state || element.issue.state;
-          // temp['link'] = element
+          temp['link'] = element.html_url
           result.push(temp);
         });
         return result;
@@ -27,7 +27,7 @@ export default function useApplicationData() {
           temp['title'] = element.title || element.issue.title;
           temp['category'] = 'close';
           temp['state'] = element.state || element.issue.state;
-          // temp['link'] = element
+          temp['link'] = element.html_url
           result.push(temp);
         });
         return result;
@@ -42,7 +42,7 @@ export default function useApplicationData() {
           temp['title'] = element.title || element.issue.title;
           temp['category'] = 'pull';
           temp['state'] = element.state || element.issue.state;
-          // temp['link'] = element
+          temp['link'] = element.html_url
           result.push(temp);
         });
         return result;
