@@ -1,17 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+
 import SearchBar from "./components/SearchPage";
 import Table from './components/Table';
+import useApplicationData from './hooks/useApplicationData';
 
 function App() {
 
-  axios.get('https://api.github.com/repos/ZSully09/To-Do-List/issues')
-    .then(res => console.log(res));
+  const { getIssues, getStatus } = useApplicationData();
 
   const search = (data) => {
-    console.log(data);
+    getIssues().then((res) => {
+      console.log(res);
+
+    });
   }
   return (
     <div className="App">
