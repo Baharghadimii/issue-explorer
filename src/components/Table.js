@@ -2,16 +2,22 @@ import React from 'react';
 import './Table.scss';
 import TableData from './TableRow';
 
-const Table = () => {
+const Table = (props) => {
   return (
     <table className="table">
-      <th className='head issues'>Issues</th>
+      <th className='head issues'>{props.name}</th>
       <th className='head status'>Status</th>
       <tbody>
-        <tr className='row'>
-          <TableData className='tb-data td-issue'>1</TableData>
-          <TableData className='tb-data td-status'>a</TableData>
-        </tr>
+
+        {props.data.map(item => {
+          console.log(item);
+          return (
+            <tr className='row'>
+              <TableData title={item.title}></TableData>
+              <Octicon icon={Icon} />
+            </tr>)
+        })}
+
       </tbody>
     </table>
   )

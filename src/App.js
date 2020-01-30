@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 
 import SearchBar from "./components/SearchPage";
 import Table from './components/Table';
@@ -15,18 +15,21 @@ function App() {
 
   const search = (data) => {
     const requestData = data.split('com/');
-    getIssues(requestData[1]).then((res) => {
-      setState({ ...state, issues: res })
+    getIssues(requestData[1]).then((issues) => {
+      getPullRequest(requestData[1]).then((pulls) => {
+        setState({ ...state, pulls: pulls, issues: issues })
+      });
     });
-    getPullRequest(requestData[1]).then((res) => {
-      setState({ ...state, pulls: res })
-    })
+
   }
   console.log(state);
   return (
     <div className="App">
       <SearchBar onSearch={search} />
-      <Table issues={state.issues} pulls={state.pulls} />
+      <div className="tables">
+        <Table data={state.issues} name="Issue" />
+        <Table data={state.pulls} name="Pull Request" />
+      </div>
     </div>
 
   );

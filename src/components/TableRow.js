@@ -1,6 +1,7 @@
 import React from 'react';
-const TableData = () => {
-  return <td>Hello</td>
+import './TableRow.scss';
 
-}
-export default TableData;
+export default function TableData(props) {
+  console.log(props.title);
+  return <td className='tb-data td-issue'>{props.title}</td>
+};
