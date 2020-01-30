@@ -19,7 +19,7 @@ function App() {
     list: []
   });
   const { mode, transition } = useVisualMode(
-    state.list ? SHOW : EMPTY
+    state.list.length ? SHOW : EMPTY
   );
 
   const select = (value) => {
@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar onSearch={search} />
-      {mode === 'EMPTY' && <h1>Place the repository link in the search bar and click to see the issues!</h1>}
+      {mode === 'EMPTY' && <h1 className='initial-text'>Place the repository link in the search bar and click to see the issues!</h1>}
       {mode === 'SHOW' && <div className="tables">
         <Table data={state} select={select} />
       </div>}

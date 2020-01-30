@@ -16,7 +16,7 @@ const Table = (props) => {
           <option value='all'>All</option>
           <option value='open'>Open</option>
           <option value='close'>Close</option>
-          <option value='pull'>Pull Re...</option>
+          <option value='pull'>Pull Request</option>
         </select>
       </thead>
       <tbody className="tb-body">

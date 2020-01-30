@@ -1,5 +1,5 @@
 .table {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 3rem;
   text-align: center;
@@ -13,12 +13,13 @@
   background-color: #e5e8e8;
   margin-top: 1rem;
   font-size: 20px;
+  width: 10rem;
   border: 0px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url(https://www.pngkey.com/png/detail/25-257290_drop-down-arrow-solid-svg-png-icon-free.png)
-    96% / 20% no-repeat #e5e8e8;
+    96% / 10% no-repeat #e5e8e8;
   &:focus {
     outline: none;
   }
