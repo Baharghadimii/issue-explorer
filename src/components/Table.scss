@@ -1,5 +1,5 @@
 .table {
-  width: 30%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 3rem;
   text-align: center;
@@ -12,7 +12,11 @@
   font-size: 25px;
 }
 .issues {
+  width: 60%;
   border-radius: 7px 7px 0px 0px;
+}
+.status {
+  width: 20%;
 }
 .row {
   height: 3rem;

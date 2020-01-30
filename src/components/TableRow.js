@@ -4,7 +4,7 @@ import Octicon, { IssueClosed, IssueOpened, GitPullRequest } from '@github/octic
 
 export default function TableData(props) {
   return <tr>
-    <td className='tb-data td-issue'>{props.title}</td>
+    <td className='tb-data'>{props.title}</td>
     {props.category === 'pull' && <Octicon icon={GitPullRequest} />}
     {props.status === 'open' && props.category !== 'pull' && <spen style={{ color: 'green' }}><Octicon icon={IssueClosed} /></spen>}
     {props.status === 'closed' && !props.pull && <spen style={{ color: 'red' }}><Octicon icon={IssueOpened} /></spen>}

@@ -10,8 +10,10 @@ const Table = (props) => {
   }
   console.log(props.filter.open)
   return (
+    // <div>
     <table className="table">
       <th className='head issues'>Issues</th>
+      <th className='head status'>Status</th>
       <select onChange={(e) => select(e.target.value)}>
         <option value='all'>All</option>
         <option value='open'>Open</option>
@@ -19,7 +21,6 @@ const Table = (props) => {
         <option value='pull'>Pull Request</option>
       </select>
       <tbody>
-
         {props.data.list.map(item => {
           return (
             <TableRow className='row' category={item.category} title={item.title} status={item.state}>
@@ -27,6 +28,7 @@ const Table = (props) => {
         })}
       </tbody>
     </table>
+    // </div >
   )
 }
 export default Table;
