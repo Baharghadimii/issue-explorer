@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import SearchBar from "./components/SearchPage";
@@ -8,16 +8,25 @@ import useApplicationData from './hooks/useApplicationData';
 function App() {
 
   const { getIssues, getPullRequest } = useApplicationData();
+  const [state, setState] = useState({
+    issues: [],
+    pulls: []
+  });
 
   const search = (data) => {
-    getIssues('ZSully09', 'To-Do-List').then((res) => {
-      console.log(res);
+    const requestData = data.split('com/');
+    getIssues(requestData[1]).then((res) => {
+      setState({ ...state, issues: res })
     });
+    getPullRequest(requestData[1]).then((res) => {
+      setState({ ...state, pulls: res })
+    })
   }
+  console.log(state);
   return (
     <div className="App">
       <SearchBar onSearch={search} />
-      <Table />
+      <Table issues={state.issues} pulls={state.pulls} />
     </div>
 
   );

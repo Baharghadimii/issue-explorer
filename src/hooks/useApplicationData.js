@@ -4,16 +4,16 @@ import axios from 'axios';
 export default function useApplicationData() {
 
 
-  function getIssues(owner, repo) {
-    return axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`)
+  function getIssues(ownerRepo) {
+    return axios.get(`https://api.github.com/repos/${ownerRepo}/issues`)
       .then(res => {
         return res.data;
       });
   }
-  function getPullRequest() {
-    return axios.get('https://api.github.com/repos/ZSully09/To-Do-List/issues')
+  function getPullRequest(ownerRepo) {
+    return axios.get(`https://api.github.com/repos/${ownerRepo}/pulls`)
       .then(res => {
-        // dispatch({ type: GET_STATUS, status: res })
+        return res.data
       });
   }
   return { getIssues, getPullRequest }
