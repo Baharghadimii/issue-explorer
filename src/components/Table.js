@@ -20,10 +20,10 @@ const Table = (props) => {
         <option value='close'>Close</option>
         <option value='pull'>Pull Request</option>
       </select>
-      <tbody>
+      <tbody className="tb-body">
         {props.data.list.map(item => {
           return (
-            <TableRow className='row' category={item.category} title={item.title} status={item.state}>
+            <TableRow category={item.category} title={item.title} status={item.state}>
             </TableRow>)
         })}
       </tbody>

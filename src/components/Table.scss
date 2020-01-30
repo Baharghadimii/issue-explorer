@@ -4,7 +4,10 @@
   margin-top: 3rem;
   text-align: center;
   font-family: "Alegreya", sans-serif;
+  border: 1px solid black;
+  border-radius: 5px;
 }
+
 .head {
   background-color: #e5e8e8;
   height: 3rem;
@@ -17,7 +20,4 @@
 }
 .status {
   width: 20%;
-}
-.row {
-  height: 3rem;
 }

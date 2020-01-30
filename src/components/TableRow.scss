@@ -1,5 +1,6 @@
 .tb-data {
   font-size: 20px;
+  float: left;
 }
 .td-status {
   margin-left: 2rem;
@@ -7,4 +8,8 @@
 .td-issue {
   margin-left: 2rem;
   float: left;
+}
+.row {
+  height: 3rem;
+  border: 1px solid black;
 }
