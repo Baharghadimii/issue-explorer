@@ -54,7 +54,7 @@ function App() {
       {mode === 'SHOW' && <div className="tables">
         <Table data={state} select={select} />
       </div>}
-      {mode === 'SPINNER' && <CircularProgress style={{ marginTop: '5rem' }} disableShrink />}
+      {mode === 'SPINNER' && <CircularProgress size={60} style={{ marginTop: '7rem' }} disableShrink />}
     </div>
 
   );
