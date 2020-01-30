@@ -3,20 +3,33 @@
   margin: 0 auto;
   margin-top: 3rem;
   text-align: center;
-  font-family: "Alegreya", sans-serif;
   border: 1px solid black;
   border-radius: 5px;
 }
-
+.t-head {
+  background-color: #e5e8e8;
+}
+.drop {
+  background-color: #e5e8e8;
+  margin-top: 1rem;
+  font-size: 20px;
+  border: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(https://www.pngkey.com/png/detail/25-257290_drop-down-arrow-solid-svg-png-icon-free.png)
+    96% / 20% no-repeat #e5e8e8;
+  &:focus {
+    outline: none;
+  }
+}
 .head {
   background-color: #e5e8e8;
   height: 3rem;
-  padding-top: 1rem;
   font-size: 25px;
 }
 .issues {
   width: 60%;
-  border-radius: 7px 7px 0px 0px;
 }
 .status {
   width: 20%;

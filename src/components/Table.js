@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Table.scss';
 import TableRow from './TableRow';
 
-
 const Table = (props) => {
 
   const select = (value) => {
@@ -10,16 +9,17 @@ const Table = (props) => {
   }
   console.log(props.filter.open)
   return (
-    // <div>
     <table className="table">
-      <th className='head issues'>Issues</th>
-      <th className='head status'>Status</th>
-      <select onChange={(e) => select(e.target.value)}>
-        <option value='all'>All</option>
-        <option value='open'>Open</option>
-        <option value='close'>Close</option>
-        <option value='pull'>Pull Request</option>
-      </select>
+      <thead className='t-head'>
+        <th className='head issues'>Issues</th>
+        <th className='head status'>Status</th>
+        <select className='drop' onChange={(e) => select(e.target.value)}>
+          <option value='all'>All</option>
+          <option value='open'>Open</option>
+          <option value='close'>Close</option>
+          <option value='pull'>Pull Re...</option>
+        </select>
+      </thead>
       <tbody className="tb-body">
         {props.data.list.map(item => {
           return (
@@ -28,7 +28,6 @@ const Table = (props) => {
         })}
       </tbody>
     </table>
-    // </div >
   )
 }
 export default Table;
