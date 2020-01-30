@@ -1,3 +1,4 @@
+# Issue Explorer
 Issue Explorer is a single page app that searches for issues and pull requests for a repository address.
 
 ## Available Scripts
