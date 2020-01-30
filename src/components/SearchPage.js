@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './SearchPage.scss';
-import { checkPropTypes } from "prop-types";
 
 const SearchPage = (props) => {
   const [state, setState] = useState('');
