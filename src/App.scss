@@ -1,9 +1,13 @@
 .App {
   text-align: center;
+  font-family: "Alegreya", sans-serif;
 }
 .tables {
   display: flex;
   flex-direction: row;
+}
+.initial-text {
+  margin-top: 5rem;
 }
 .App-logo {
   height: 40vmin;

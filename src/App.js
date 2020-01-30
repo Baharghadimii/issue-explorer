@@ -4,49 +4,57 @@ import './App.scss';
 import SearchBar from "./components/SearchPage";
 import Table from './components/Table';
 import useApplicationData from './hooks/useApplicationData';
+import useVisualMode from './hooks/useVisualMode';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+let DATA = [];
+const EMPTY = 'EMPTY';
+const SPINNER = 'SPINNER';
+const SHOW = 'SHOW';
 
 function App() {
 
-  const { getIssues, getPullRequests } = useApplicationData();
+  const { setList } = useApplicationData();
   const [state, setState] = useState({
-    issues: [],
-    pull: []
+    list: []
   });
-  const [filter, setFilter] = useState({
-    open: false,
-    close: false,
-    pull: false,
-    all: false
-  })
+  const { mode, transition } = useVisualMode(
+    state.list.length ? SHOW : EMPTY
+  );
 
   const select = (value) => {
     if (value === 'open') {
-      setFilter({ ...state, open: true, close: false, pull: false, all: false })
+      const openList = DATA.filter(item => item.category === 'open')
+      setState({ list: openList })
     } else if (value === 'close') {
-      setFilter({ ...state, close: true, open: false, pull: false, all: false })
+      const closeList = DATA.filter(item => item.category === 'close')
+      setState({ list: closeList })
     } else if (value === 'pull') {
-      setFilter({ ...state, pull: true, close: false, open: false, all: false })
+      const pullList = DATA.filter(item => item.category === 'pull')
+      setState({ list: pullList })
     } else {
-      setFilter({ ...state, all: true, close: false, open: false, pull: false });
+      setState({ list: DATA })
     }
   }
   const search = (data) => {
+    transition(SPINNER);
     const requestData = data.split('com/');
-    getIssues(requestData[1]).then((issuesList) => {
-      getPullRequests(requestData[1]).then((pullsList) => {
-        setState({ ...state, issues: issuesList, pull: pullsList })
-        setFilter({ ...state, all: true, close: false, open: false, pull: false })
-      })
-    })
+    setList(requestData[1]).then((data) => {
+      setState({ list: data.list });
+      transition(SHOW);
+      DATA = data.list;
+    });
 
   }
   console.log(state);
   return (
     <div className="App">
       <SearchBar onSearch={search} />
-      <div className="tables">
-        <Table data={state} select={select} filter={filter} />
-      </div>
+      {mode === 'EMPTY' && <h1 className='initial-text'>Place the repository link in the search bar and click to see the issues!</h1>}
+      {mode === 'SHOW' && <div className="tables">
+        <Table data={state} select={select} />
+      </div>}
+      {mode === 'SPINNER' && <CircularProgress style={{ marginTop: '5rem' }} disableShrink />}
     </div>
 
   );
