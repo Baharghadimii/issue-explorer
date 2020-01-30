@@ -20,24 +20,9 @@ const Table = (props) => {
       </select>
       <tbody>
 
-        {(props.filter.open || props.filter.all) && props.data.issues.map(item => {
-          if (item.issue.state === 'open') {
-            return (
-              <TableRow className='row' data={item.issue} status={item.issue.state}>
-              </TableRow>)
-          }
-        })}
-
-        {(props.filter.close || props.filter.all) && props.data.issues.map(item => {
-          if (item.issue.state === 'closed') {
-            return (
-              <TableRow className='row' data={item.issue} status={item.issue.state}>
-              </TableRow>)
-          }
-        })}
-        {(props.filter.pull || props.filter.all) && props.data.pull.map(item => {
+        {props.data.list.map(item => {
           return (
-            <TableRow className='row' pull={true} data={item} status={item.state}>
+            <TableRow className='row' category={item.category} title={item.title} status={item.state}>
             </TableRow>)
         })}
       </tbody>

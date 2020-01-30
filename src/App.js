@@ -4,13 +4,13 @@ import './App.scss';
 import SearchBar from "./components/SearchPage";
 import Table from './components/Table';
 import useApplicationData from './hooks/useApplicationData';
+let DATA = [];
 
 function App() {
 
-  const { getIssues, getPullRequests } = useApplicationData();
+  const { setList } = useApplicationData();
   const [state, setState] = useState({
-    issues: [],
-    pull: []
+    list: []
   });
   const [filter, setFilter] = useState({
     open: false,
@@ -21,23 +21,24 @@ function App() {
 
   const select = (value) => {
     if (value === 'open') {
-      setFilter({ ...state, open: true, close: false, pull: false, all: false })
+      const openList = DATA.filter(item => item.category === 'open')
+      setState({ list: openList })
     } else if (value === 'close') {
-      setFilter({ ...state, close: true, open: false, pull: false, all: false })
+      const closeList = DATA.filter(item => item.category === 'close')
+      setState({ list: closeList })
     } else if (value === 'pull') {
-      setFilter({ ...state, pull: true, close: false, open: false, all: false })
+      const pullList = DATA.filter(item => item.category === 'pull')
+      setState({ list: pullList })
     } else {
-      setFilter({ ...state, all: true, close: false, open: false, pull: false });
+      setState({ list: DATA })
     }
   }
   const search = (data) => {
     const requestData = data.split('com/');
-    getIssues(requestData[1]).then((issuesList) => {
-      getPullRequests(requestData[1]).then((pullsList) => {
-        setState({ ...state, issues: issuesList, pull: pullsList })
-        setFilter({ ...state, all: true, close: false, open: false, pull: false })
-      })
-    })
+    setList(requestData[1]).then((data) => {
+      setState({ list: data.list });
+      DATA = data.list;
+    });
 
   }
   console.log(state);
